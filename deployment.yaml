@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.service.type: ClusterIP
+    kompose.version: 1.26.0 (40646f47)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: sandbox
+  name: sandbox
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: sandbox
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.service.type: LoadBalancer
+        kompose.version: 1.26.0 (40646f47)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: sandbox
+    spec:
+      imagePullSecrets:
+        - name: ibm-registry-apikey
+      containers:
+        - image: de.icr.io/devops-tools/sandbox
+          name: sandbox
+          ports:
+      restartPolicy: Always
+
+status: {}
