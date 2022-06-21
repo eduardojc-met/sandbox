@@ -28,7 +28,7 @@ spec:
       imagePullSecrets:
         - name: ibm-registry-apikey
       containers:
-        - image: de.icr.io/devops-tools/sandbox
+        - image: de.icr.io/devops-tools/sandbox:latest
           name: sandbox
           ports:
       restartPolicy: Always
